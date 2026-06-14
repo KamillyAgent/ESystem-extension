@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESystem — Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page__header">
+      <span class="logo">🛡</span>
+      <h1>ESystem Settings</h1>
+    </header>
+
+    <section class="card">
+      <h2>Connection</h2>
+      <p class="hint">Enter your backend URL and the API key from your <a id="dashboardLink" href="#" target="_blank">ESystem dashboard</a>.</p>
+
+      <div class="field">
+        <label for="backendUrl">Backend URL</label>
+        <input id="backendUrl" type="url" placeholder="https://esystem.masud.app" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="apiKey">API key</label>
+        <input id="apiKey" type="password" placeholder="esk_..." autocomplete="off" />
+        <p class="hint hint--small">Starts with <code>esk_</code>. Shown once when generated — paste it here.</p>
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="btn btn--primary">Save & verify</button>
+        <button id="signOutBtn" class="btn btn--danger">Sign out</button>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+    </section>
+
+    <section class="card">
+      <h2>Account</h2>
+      <div id="account" class="account">
+        <div class="account__row"><span>Email</span><strong id="accEmail">—</strong></div>
+        <div class="account__row"><span>Key label</span><strong id="accKey">—</strong></div>
+        <div class="account__row"><span>Blocklist size</span><strong id="accListSize">—</strong></div>
+        <div class="account__row"><span>Last sync</span><strong id="accLastSync">—</strong></div>
+      </div>
+      <div class="actions">
+        <button id="syncNowBtn" class="btn">Sync now</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Pause</h2>
+      <p class="hint">Temporarily disable blocking. Detection still runs in the background.</p>
+      <div class="actions">
+        <button class="btn" data-pause="60">Pause 1h</button>
+        <button class="btn" data-pause="0">Resume</button>
+      </div>
+      <p id="pausedStatus" class="hint hint--small"></p>
+    </section>
+  </main>
+
+  <script src="../vendor/browser-polyfill.min.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

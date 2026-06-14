@@ -1,0 +1,75 @@
+{
+  "manifest_version": 3,
+  "name": "ESystem",
+  "version": "0.1.0",
+  "description": "Block NSFW, adult, and 18+ pages and domains. Syncs your blocklist across devices.",
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "webNavigation",
+    "alarms"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "scripts": [
+      "src/vendor/browser-polyfill.min.js",
+      "src/background/background.js"
+    ]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "src/vendor/browser-polyfill.min.js",
+        "src/shared/storage.js",
+        "src/shared/api.js",
+        "src/shared/patterns.js",
+        "src/shared/detector.js",
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "ESystem",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+
+  "options_ui": {
+    "page": "src/options/settings.html",
+    "open_in_tab": true
+  },
+
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "esystem@masud.app",
+      "strict_min_version": "109.0"
+    }
+  }
+}

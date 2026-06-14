@@ -1,0 +1,17 @@
+{
+  "name": "esystem-extension",
+  "version": "0.1.0",
+  "description": "Browser extension for ESystem — blocks NSFW / adult / 18+ pages and domains.",
+  "private": true,
+  "scripts": {
+    "build:chrome": "node build.js chrome",
+    "build:brave":  "node build.js brave",
+    "build:firefox":"node build.js firefox",
+    "build:all":    "node build.js all",
+    "zip:chrome":   "node build.js chrome --zip",
+    "zip:firefox":  "node build.js firefox --zip"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1"
+  }
+}
